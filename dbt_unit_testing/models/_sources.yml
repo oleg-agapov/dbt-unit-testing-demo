@@ -1,0 +1,6 @@
+sources:
+  - name: postgres
+    schema: dbt
+    tables:
+      - name: orders
+      - name: users

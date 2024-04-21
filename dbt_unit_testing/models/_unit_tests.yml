@@ -1,0 +1,16 @@
+unit_tests:
+  - name: unit_testing__dim_users
+    description: "Cheking the validity of dim_users model"
+    model: dim_users
+    given:
+      - input: ref('stg__users')
+        rows:
+          - { user_id: 1, email: john@gmail.com, city: London }
+          - { user_id: 2, email: mary@gmail.com, city: New-York }
+      - input: ref('stg__orders')
+        rows:
+          - { order_id: 1, user_id: 1, amount: 59.99 }
+    expect:
+      rows:
+        - { user_id: 1, email: john@gmail.com, number_of_orders: 1 }
+        - { user_id: 2, email: mary@gmail.com, number_of_orders: 0 }

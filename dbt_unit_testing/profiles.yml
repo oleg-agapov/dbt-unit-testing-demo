@@ -1,0 +1,11 @@
+dbt_unit_testing:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      user: admin
+      password: root
+      port: 5432
+      dbname: test_db
+      schema: dbt
